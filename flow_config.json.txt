@@ -1,0 +1,11 @@
+{
+  "flow_name": "Auto Ticket Classification",
+  "application": "Global",
+  "trigger": {"type": "Record Created or Updated", "table": "incident"},
+  "decision_table": [
+    {"name": "Hardware Issue", "keywords": ["laptop", "hardware", "keyboard"], "outputs": {"assignment_group": "Hardware", "category": "Hardware", "priority": "3"}},
+    {"name": "Access Issue", "keywords": ["password", "login", "access"], "outputs": {"assignment_group": "Service Desk", "category": "Software", "priority": "3"}},
+    {"name": "Network Issue", "keywords": ["network", "wifi", "vpn"], "outputs": {"assignment_group": "Network", "category": "Network", "priority": "2"}},
+    {"name": "Critical Issue", "keywords": ["server down", "critical"], "outputs": {"assignment_group": "Server Team", "priority": "1"}}
+  ]
+}

@@ -1,0 +1,26 @@
+MILESTONE 1 - Create Flow: Auto Ticket Classification
+
+1. ServiceNow -> All -> Flow Designer
+2. New -> Flow -> Name: Auto Ticket Classification, Application: Global, Run As: System user, Submit
+3. Add Trigger: Created or Updated, Table: Incident [incident], Condition: Short Description is not empty
+4. Add Flow Logic: Decision - Classify Ticket Type
+
+Decision 1: Hardware Issue
+Condition: Short Description CONTAINS laptop OR hardware OR keyboard OR mouse OR printer
+-> Action: Update Incident Record - Assignment Group = Hardware, Category = Hardware, Priority = 3
+
+Decision 2: Access Issue
+Condition: Short Description CONTAINS password OR login OR access OR locked OR reset
+-> Action: Update Incident Record - Assignment Group = Service Desk, Category = Software, Priority = 3
+
+Decision 3: Network Issue
+Condition: Short Description CONTAINS network OR wifi OR internet OR vpn
+-> Action: Update Incident Record - Assignment Group = Network, Category = Network, Priority = 2
+
+Decision 4: Critical / Server
+Condition: Short Description CONTAINS server down OR critical OR outage
+-> Action: Update Incident Record - Assignment Group = Server Team, Priority = 1, Urgency = 1
+
+Default: Assignment Group = Service Desk, Category = Inquiry
+5. Add Work Notes: "Ticket Auto-Classified by Flow"
+6. Save -> Activate

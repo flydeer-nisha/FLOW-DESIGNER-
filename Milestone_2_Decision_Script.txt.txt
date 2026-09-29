@@ -1,0 +1,20 @@
+OPTIONAL - Advanced Script for Classification
+
+In Flow -> Add Action -> Run Script:
+
+(function classification() {
+    var desc = fd_data.trigger.current.short_description.toLowerCase();
+    if (desc.indexOf('laptop') > -1 || desc.indexOf('hardware') > -1 || desc.indexOf('keyboard') > -1) {
+        return { group: 'Hardware', category: 'Hardware', priority: '3' };
+    } else if (desc.indexOf('password') > -1 || desc.indexOf('login') > -1 || desc.indexOf('access') > -1) {
+        return { group: 'Service Desk', category: 'Software', priority: '3' };
+    } else if (desc.indexOf('wifi') > -1 || desc.indexOf('network') > -1 || desc.indexOf('vpn') > -1) {
+        return { group: 'Network', category: 'Network', priority: '2' };
+    } else if (desc.indexOf('server down') > -1 || desc.indexOf('critical') > -1) {
+        return { group: 'Server Team', category: 'Software', priority: '1' };
+    } else {
+        return { group: 'Service Desk', category: 'Inquiry', priority: '4' };
+    }
+})();
+
+Use Outputs in Update Record Action.

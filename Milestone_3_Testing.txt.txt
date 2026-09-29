@@ -1,0 +1,9 @@
+MILESTONE 3 - TESTING
+
+1. All -> Incidents -> Create New
+2. Test Case 1: "My laptop keyboard not working" -> Expected: Hardware, Category Hardware
+3. Test Case 2: "Need password reset, login locked" -> Expected: Service Desk, Category Software
+4. Test Case 3: "Wifi not connecting, vpn issue" -> Expected: Network, Priority 2
+5. Test Case 4: "Server down - production critical outage" -> Expected: Server Team, Priority 1
+6. Check Flow Execution: Flow Designer -> Executions -> Verify Decision path
+7. Check Work Notes: Should show "Ticket Auto-Classified by Flow"
